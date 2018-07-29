@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!--logo-->
+        <link rel="icon" href="/static/img/favicon.ico" />
+        <title>属性查狗</title>
+        <!-- 引入 bootstrap.min.css -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+        <!-- 引入 jquery-3.2.1.min.js -->
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+        <!-- 引入 vue-2.5.16.min.js -->
+        <script src="/static/js/vue-2.5.16.min.js"></script>
+        <!--分页插件-->
+        <script src="/static/js/jquery.twbsPagination.min.js"></script>
+        <style>p{ margin:0 auto}</style>
+    <body>
+        <div id="app">
+            <div class="container-fluid">
+                <div class="col col-md-10 offset-md-1">
+                    <div class="row">
+                        <div class="col text-center text-info">
+                            <h3 class="text-info">温馨提示: 为避免查询时间过长，请尽量多的指定属性值</h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-10 offset-md-1">
+                <div class="row">
+                    <div class="col" v-for="attribute in attributes">
+                        <label :for="attribute.value">${attribute.name}</label>
+                        <select class="form-control selectpicker" v-model="attribute.value" style="width:150px;">
+                            <option v-for="value in attribute.values">${value}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-10 offset-md-1">
+                <div class="row">
+                    <div class="col">
+                        <label v-for="filter in userAvailableQueryFilter">
+                            <input type="radio" v-model="petType" :value="filter" />${filter}
+                        </label>
+                        <button class="btn btn-dark" v-if="enableUpdateMyPets" type="button" @click="updateMyPets()">更新我的狗狗数据库</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-dark" type="button" @click="getPages()">查询</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                       &nbsp;<div id="pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-10 offset-md-1">
+                <div class="col text-center" v-if="info != '查询完毕'">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1>${info}</h1></div>
+            </div>
+            <div class="col col-md-10 offset-md-1">
+                <div class="row">
+                    <div class="col" v-for="pet in pets">
+                        <a :href="'https://pet-chain.baidu.com/chain/detail?channel=market&petId='+ pet.petId +'&appId=1&validCode='" target="_blank">
+                            <img class="center-block" :src="pet.petUrl" :style="'width:150px; background-color:'+ pet.bgColor"></a>
+                        <p>
+                            <span class="badge" style="background-color: #F76707; color: #FFFFFF;">${pet.rareDegree}</span>
+                            <span class="badge" style="background-color: #D3931A; color: #FFFFFF;">第${pet.generation}代</span>
+                            <span class="badge" style="background-color: #FD6484; color: #FFFFFF;">${pet.coolingInterval}</span>
+                        </p>
+                        <p>${pet.desc} ${pet.id}</p>
+                        <p>
+                            <font color="red">${pet.amount}</font>
+                        </p>
+                        <button type="button" class="btn btn-outline-info" @click="collect(pet.petId, pet.operation)">${pet.operation}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- 引入 pretty.js -->
+        <script src="/static/js/pretty.js"></script>
+    </body>
+
+</html>

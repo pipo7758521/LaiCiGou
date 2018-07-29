@@ -1,0 +1,15 @@
+.settings
+.idea
+/
+target/
+*.log
+.classpath
+.project
+bin/
+venv
+__pycache__
+cfg.py
+mongo.txt
+play.py
+app/config/user.json
+app/config/mongo.json

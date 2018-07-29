@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!--logo-->
+        <link rel="icon" href="/static/img/favicon.ico" />
+        <title>双（多）胞胎统计查询</title>
+        <!-- 引入 bootstrap.min.css -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+        <style type="text/css">.borderless td, .borderless th { border: none; padding: 5px 0px 5px 0px; }</style>
+        <!-- 引入 jquery-3.2.1.min.js -->
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+        <!-- 引入 vue-2.5.16.min.js -->
+        <script src="/static/js/vue-2.5.16.min.js"></script>
+        <style type="text/css">.table th, .table td { //text-align: center; vertical-align: middle!important; } .table th, .table td image{ //text-align: center; vertical-align: middle!important; }</style></head>
+
+    <body>
+        <div id="app">
+            <div class="container-fluid">
+                <div class="w-100"></div>
+                <div class="col col-md-10 offset-md-1">
+                    <br>
+                    <h3 class="text-center">孪生狗（同属性)查询</h3>
+                    <div class="input-group">
+                        <input type="text" id="petId" class="form-control" placeholder="输入狗狗链接或19位id" v-model="queryPetId" aria-describedby="basic-addon2" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" @click="queryTwins()">查询</button></div>
+                    </div>
+                    <h3 class="text-center text-danger" v-if="info !== ''">${info}</h3></div>
+                <div class="w-100"></div>
+                <div class="col col-md-3 offset-md-1" v-if="finish && info != '你的狗狗独一无二，没有孪生兄弟'">
+                    <br><br>
+                    <h3>${queryTwinsDetails.petAmount}胞胎</h3>
+                    <h5>
+                        <br>
+                        <span class="badge" id="rareDegree" style="background-color: #F76707; color: #FFFFFF;">${queryTwinsDetails.rareDegree}</span>
+                        <span class="badge" id="rareAmount" style="background-color: #D3931A; color: #FFFFFF;">${queryTwinsDetails.rareAmount}稀</span></h5>
+                    <table class="table borderless" style="">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h5 class="text-left">属性</h5></td>
+                                <td></td>
+                            </tr>
+                            <tr v-for="(values, key) in attributes">
+                                <td>${values[0].name}： ${values[0].value}
+                                    <font color="red">${values[0].rare}</font></td>
+                                <td>${values[1].name}： ${values[1].value}
+                                    <font color="red">${values[1].rare}</font></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="w-100"></div>
+                <div class="col col-md-10 offset-md-1" v-if="finish && info != '你的狗狗独一无二，没有孪生兄弟'">
+                    <div class="row">
+                        <div class="col" v-for="pet in queryTwinsDetails.pets">
+                            <img class="center-block" :src="pet.petUrl" :style="'width: 250px;height:250px; background-color:'+ pet.bgColor">
+                            <h5>
+                                <br>
+                                <span class="badge" style="background-color: #F76707; color: #FFFFFF;">${pet.rareDegree}</span>
+                                <span class="badge" style="background-color: #D3931A; color: #FFFFFF;">第${pet.generation}代</span>
+                                <span class="badge" style="background-color: #FD6484; color: #FFFFFF;">${pet.coolingInterval}</span></h5>
+                            <h3>
+                                <a :href="'https://pet-chain.baidu.com/chain/detail?channel=market&petId='+ pet.petId +'&appId=1&validCode='" target="_blank">${pet.desc} ${pet.id}</a></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 引入 twins.js -->
+        <script src="/static/js/query-twins.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <!--logo-->
+        <link rel="icon" href="/static/img/favicon.ico" />
+        <title>莱茨狗工具站</title>
+        <!-- 引入 bootstrap.min.css -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/static/css/custom.css" /></head>
+
+    <body>
+        <!--<header>-->
+            <!--<div class="navbar navbar-dark bg-dark box-shadow">-->
+                <!--<div class="container d-flex justify-content-between">-->
+                    <!--<a href="#" class="navbar-brand d-flex align-items-center">-->
+                        <!--<strong>莱茨狗工具站</strong></a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</header>-->
+        <main role="main">
+            <section class="jumbotron text-center">
+                <div class="container">
+                    <h1 class="jumbotron-heading">莱茨狗工具站</h1>
+                    <p class="lead text-muted">按属性查狗，各种数据统计，狗蛋快照，ID转换，微积分统计</p>
+                    <p class="lead text-muted"><font color="red">重点推荐：按属性查狗</font></p>
+                    <!--<p>-->
+                    <!--<a href="#" class="btn btn-primary my-2">Main call to action</a>-->
+                    <!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>-->
+                    <!--</p>--></div>
+            </section>
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">属性查狗</h3>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <a href="https://pet-chain.baidu.com/" target="_blank">官网</a>
+                                        没有按属性查狗？
+                                        <font color="red">这里有！</font>
+                                    </p>
+                                    <p class="card-text"><font color="red">没在市场上的狗狗也能查出来！</font></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/pretty/" class="btn btn-sm btn-outline-secondary" target="_blank">进入查询</a>
+                                        </div>
+                                        <!--<small class="text-muted">共-->
+                                            <!--<font color="red" size="5">{{data.total_amount}}</font>-->
+                                        <!--</small>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">属性统计</h3></div>
+                                <!--<img class="card-img-top" src="/static/img/rere_degree.png" height="300" width="auto" />-->
+                                <div class="card-body">
+                                    <p class="card-text">狗狗稀有等级数量统计</p>
+                                    <p class="card-text">全属性数量分布</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/pie/" class="btn btn-sm btn-outline-secondary" target="_blank">查看</a>
+                                            <!--<button type="button" class="btn btn-sm btn-outline-secondary">查看</button>--></div>
+                                        <small class="text-muted">当前收录狗狗
+                                            <font color="red" size="5">{{data.total_amount}}</font>条</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">繁殖统计</h3></div>
+                                <div class="card-body">
+                                    <p class="card-text">非零代狗狗数量分布</p>
+                                    <p class="card-text">狗狗双亲稀有等级数量对照</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/breed/" class="btn btn-sm btn-outline-secondary" target="_blank">查看</a></div>
+                                        <small class="text-muted">当前收录非初代狗狗
+                                            <font color="red" size="5">{{data.children_amount}}</font>条</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">狗蛋B超</h3></div>
+                                <div class="card-body">
+                                    <p class="card-text">提早知道狗蛋稀有度及各属性详细信息</p>
+                                    <p class="card-text">繁育人品
+                                        <font color="red">PK</font></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/recognise/" class="btn btn-sm btn-outline-secondary" target="_blank">做个B超</a></div>
+                                        <small class="text-muted">共
+                                            <font color="red" size="5">{{data.recognized_babies_amount}}</font>条狗宝宝做过B超</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">孪生狗查询</h3></div>
+                                <div class="card-body">
+                                    <p class="card-text">为你的狗狗查找孪生兄弟</p>
+                                    <p class="card-text">所有孪生（同属性）狗狗列表</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/queryTwins/" class="btn btn-sm btn-outline-secondary" target="_blank">查找</a></div>
+                                        <div class="btn-group">
+                                            <a href="/twins/" class="btn btn-sm btn-outline-secondary" target="_blank">查看全部</a></div>
+                                        <small class="text-muted">共
+                                            <font color="red" size="5">{{data.twins_amount}}</font>对同属性狗狗记录</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">ID转换</h3></div>
+                                <div class="card-body">
+                                    <p class="card-text">短8位id转长19位petId</p>
+                                    <p class="card-text">&nbsp;</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/idConvert/" class="btn btn-sm btn-outline-secondary" target="_blank">转换</a></div>
+                                        <small class="text-muted">共
+                                            <font color="red" size="5">{{data.converted_id_amount}}</font>条查询转换记录</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-header bg-success text-white">
+                                    <h3 class="text-center">财产统计</h3></div>
+                                <div class="card-body">
+                                    <p class="card-text">个人微积分财产和收入支出趋势图</p>
+                                    <p class="card-text"><font color="red">暂不对外开放</font></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a href="/asset/" class="btn btn-sm btn-outline-secondary" target="_blank">进入统计</a></div>
+                                        <small class="text-muted">共
+                                            <font color="red" size="5">111</font>条统计记录</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="text-muted">
+            <div class="container">
+                <p class="text-center">&copy;
+                    <a href="/" target="_blank">莱茨狗工具站</a>2018
+                    <a href="mailto:249664317@qq.com">联系作者</a></p>
+            </div>
+        </footer>
+    </body>
+
+</html>

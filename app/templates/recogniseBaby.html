@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!--logo-->
+        <link rel="icon" href="/static/img/favicon.ico" />
+        <title>狗蛋B超</title>
+        <!-- 引入 bootstrap.min.css -->
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+        <style type="text/css">.borderless td, .borderless th { border: none; padding: 5px 0px 5px 0px; }</style>
+        <!-- 引入 echarts.js -->
+        <script src="/static/js/echarts.min.js"></script>
+        <script src="/static/js/jquery-3.2.1.min.js"></script>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <br />
+            <br />
+            <br />
+            <div class="row col-md-10 offset-md-1">
+                <div class="col">
+                    <div class="input-group">
+                        <input type="text" id="petId" class="form-control" placeholder="输入狗蛋链接或者19位Id" value="" aria-describedby="basic-addon2" />
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" onclick="getBabyAttributes()">识别</button></div>
+                    </div>
+                </div>
+                <div class="w-100"></div>
+                <div class="col" id="luckyPercentage"></div>
+                <br />
+                <div class="w-100"></div>
+                <div class="col" id="baby">
+                    <img class="center-block" id="babyPetUrl" src="" style="width: 250px;height:250px;" alt="" />
+                    <h5>
+                        <br />
+                        <span class="badge" id="babyRareDegree" style="background-color: #F76707; color: #FFFFFF;">稀有</span>
+                        <span class="badge" id="babyGeneration" style="background-color: #D3931A; color: #FFFFFF;">第二代</span>
+                        <span class="badge" id="babyCoolingInterval" style="background-color: #FD6484; color: #FFFFFF;">4天</span></h5>
+                    <h3 id="babyName">小莱xxx</h3>
+                    <table id="babyAttributesTable" class="table borderless"></table>
+                </div>
+                <div class="w-100"></div>
+                <div class="col" id="parents">
+                    <br />
+                    <br />
+                    <h5>父母</h5></div>
+                <div class="w-100"></div>
+                <div class="col" id="father">
+                    <img class="center-block" id="fatherPetUrl" src="" style="width: 250px;height:250px;" alt="" />
+                    <h5>
+                        <br />
+                        <span class="badge" id="fatherRareDegree" style="background-color: #F76707; color: #FFFFFF;">稀有</span>
+                        <span class="badge" id="fatherGeneration" style="background-color: #D3931A; color: #FFFFFF;">第二代</span>
+                        <span class="badge" id="fatherCoolingInterval" style="background-color: #FD6484; color: #FFFFFF;">4天</span></h5>
+                    <h3 id="fatherName">小莱xxx</h3>
+                    <table id="fatherAttributesTable" class="table borderless"></table>
+                </div>
+                <div class="col" id="mother">
+                    <img class="center-block" id="motherPetUrl" src="" style="width: 250px;height:250px;" alt="" />
+                    <h5>
+                        <br />
+                        <span class="badge" id="motherRareDegree" style="background-color: #F76707; color: #FFFFFF;">稀有</span>
+                        <span class="badge" id="motherGeneration" style="background-color: #D3931A; color: #FFFFFF;">第二代</span>
+                        <span class="badge" id="motherCoolingInterval" style="background-color: #FD6484; color: #FFFFFF;">4天</span></h5>
+                    <h3 id="motherName">小莱xxx</h3>
+                    <table id="motherAttributesTable" class="table borderless"></table>
+                </div>
+            </div>
+            <br />
+            <br />
+            <br /></div>
+        <script src="/static/js/recognise_baby.js"></script>
+    </body>
+
+</html>

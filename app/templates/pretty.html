@@ -42,7 +42,7 @@
                         <label v-for="filter in userAvailableQueryFilter">
                             <input type="radio" v-model="petType" :value="filter" />${filter}
                         </label>
-                        <button class="btn btn-dark" v-if="enableUpdateMyPets" type="button" @click="updateMyPets()">更新我的狗狗数据库</button>
+                        <button class="btn btn-dark" v-if="anonymous != true" type="button" @click="updateMyPets()">更新我的狗狗数据库</button>
                     </div>
                     <div class="col">
                         <button class="btn btn-dark" type="button" @click="getPages()">查询</button>
@@ -76,7 +76,7 @@
                         <p>
                             <font color="red">${pet.amount}</font>
                         </p>
-                        <button type="button" class="btn btn-outline-info" @click="collect(pet.petId, pet.operation)">${pet.operation}</button>
+                        <button type="button" class="btn btn-outline-info" v-if="anonymous != true"  @click="collect(pet.petId, pet.operation)">${pet.operation}</button>
                     </div>
                 </div>
             </div>

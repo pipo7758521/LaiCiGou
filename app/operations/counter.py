@@ -218,8 +218,8 @@ class Counter(LaiCiGou):
         my_pets.insert(pet)
 
     # 统计并保存当前账号下的所有狗狗信息
-    def save_my_pets(self):
-        my_pets.delete_many({})
+    def update_my_pets(self):
+        my_pets.delete_many({'user': self.user.name})
         page_size = 10
         total = self.get_pets_count()
         pages = total // page_size if total % page_size == 0 else (total // page_size + 1)
@@ -246,4 +246,4 @@ if __name__ == '__main__':
     # 查询统计狗宝宝稀有级别
     counter.query_babies_rage_degree()
     # 统计所有拥有的狗狗到myPets数据表
-    #counter.save_my_pets()
+    # counter.update_my_pets()

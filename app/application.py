@@ -7,6 +7,7 @@ import time
 import math
 import threading
 import pymongo
+from urllib.parse import unquote
 import app.db.mongo as mongo
 import app.logger.logger as logger
 from bson import ObjectId
@@ -498,7 +499,7 @@ class LaiCiGouWebManager():
         page_size = 10
         query = []
 
-        user_name = request.form['userName']
+        user_name = unquote(request.form['userName'])
         pet_type = request.form['petType']
         attributes = request.form.to_dict()
 
@@ -634,7 +635,8 @@ class LaiCiGouWebManager():
     # 分页查询获取狗狗
     def query_pets_of_page(self):
         query = []
-        user_name = request.form['userName']
+
+        user_name = unquote(request.form['userName'])
         page_number = int(request.form['pageNo'])
         pet_type = request.form['petType']
         attributes = request.form.to_dict()
@@ -784,7 +786,11 @@ class LaiCiGouWebManager():
         return json.dumps({'pets': pets})
 
     def collect(self):
-        user_name = request.form['userName']
+        user_name = unquote(request.form['userName'])
+        user = get_user_from_db(user_name)
+        if not user:
+            return json.dumps({'status': 1, 'info': '没有配置该账号'})
+
         pet_type = request.form['petType']
         operation = request.form['operation']
         pet_id = int(request.form['petId'])
@@ -828,16 +834,14 @@ class LaiCiGouWebManager():
         return json.dumps({'status': 0, 'featureOperation': feature_operation})
 
     def update_my_pets(self):
-        user_name = request.form['userName']
-        print(user_name)
+        user_name = unquote(request.form['userName'])
         user = get_user_from_db(user_name)
-        print(user)
         if not user:
             return json.dumps({'info': '没有配置该账号'})
 
         counter = Counter(user)
 
-        counter.save_my_pets()
+        counter.update_my_pets()
 
         return json.dumps({'info': '更新完成'})
 

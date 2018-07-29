@@ -158,7 +158,7 @@ class Breed(LaiCiGou):
     # 从珍藏的狗狗中选取要繁殖的双亲
     def get_parents_from_private_collection(self):
         father, mother = None, None
-        cursor = private_collection.find({})
+        cursor = private_collection.find({'user': self.user.name})
         for pet in cursor:
             pet = self.get_pet_info_on_market(pet['petId'])
             pet['rareAmount'] = self.get_rare_amount(pet['attributes'])

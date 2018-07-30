@@ -690,8 +690,8 @@ class LaiCiGouWebManager():
                     pet.pop('petType')
                     pet.pop('validCode')
                     pet.pop('incubateTime')
-                    pet.pop('isCooling')
                     pet['rareDegree'] = lai_ci_gou.rare_degree_dic[pet['rareDegree']]
+
                     pet['amount'] = '{0} {1}'.format(pet['amount'], '微')
 
                     is_collected = mongo.public_collection.find_one({'user': user_name, 'petId': pet['petId']})
@@ -709,6 +709,10 @@ class LaiCiGouWebManager():
                     doc.pop('motherId')
                     doc.pop('rareAmount')
                     pet_info = lai_ci_gou.get_pet_info_on_market(doc['petId'])
+
+                    doc['rareDegree'] = '{0}{1}'.format(doc['rareDegree'],
+                                                        lai_ci_gou.get_rare_amount(pet_info['attributes']))
+
                     if pet_info['shelfStatus'] == 1:
                         doc['amount'] = '{0} {1}'.format(pet_info['amount'], '微')
                     else:
@@ -741,6 +745,8 @@ class LaiCiGouWebManager():
                     doc['amount'] = '{0} {1}'.format(pet_info['amount'], '微')
                     doc['coolingInterval'] = pet_info['coolingInterval']
                     doc['desc'] = pet_info['desc']
+                    doc['rareDegree'] = '{0}{1}'.format(doc['rareDegree'],
+                                                        lai_ci_gou.get_rare_amount(pet_info['attributes']))
 
                     is_collected = mongo.public_collection.find_one({'user': user_name, 'petId': doc['petId']})
                     if is_collected:
@@ -760,11 +766,19 @@ class LaiCiGouWebManager():
                 doc.pop('fatherId')
                 doc.pop('motherId')
                 doc.pop('rareAmount')
+
                 pet_info = lai_ci_gou.get_pet_info_on_market(doc['petId'])
-                if pet_info['shelfStatus'] == 1:
-                    doc['amount'] = '{0} {1}'.format(pet_info['amount'], '微')
+                doc['isCooling'] = pet_info['isCooling']
+
+                doc['rareDegree'] = '{0}{1}'.format(doc['rareDegree'],
+                                                    lai_ci_gou.get_rare_amount(pet_info['attributes']))
+
+                status = lai_ci_gou.shelf_status[pet_info['shelfStatus']]
+                if pet_info['shelfStatus'] != 0:
+                    doc['amount'] = '{0} {1}{2}'.format(status, pet_info['amount'], '微')
                 else:
-                    doc['amount'] = '未上市交易'
+                    doc['amount'] = status
+
                 doc['coolingInterval'] = pet_info['coolingInterval']
                 doc['desc'] = pet_info['desc']
 

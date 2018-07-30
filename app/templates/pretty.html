@@ -71,6 +71,8 @@
                             <span class="badge" style="background-color: #F76707; color: #FFFFFF;">${pet.rareDegree}</span>
                             <span class="badge" style="background-color: #D3931A; color: #FFFFFF;">第${pet.generation}代</span>
                             <span class="badge" style="background-color: #FD6484; color: #FFFFFF;">${pet.coolingInterval}</span>
+                            <span class="badge" v-if="pet.isCooling" style="background-color: #A8AA8E; color: #FFFFFF;">休息中</span>
+                            <span class="badge" v-else style="background-color: #F76707; color: #FFFFFF;">正常</span>
                         </p>
                         <p>${pet.desc} ${pet.id}</p>
                         <p>

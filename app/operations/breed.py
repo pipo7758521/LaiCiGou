@@ -201,7 +201,7 @@ class Breed(LaiCiGou):
                     father, mother = self.get_parents_from_private_collection()
                     if not father or not mother:
                         logger.warn('没有可用的狗狗，请使用其他方式选择繁殖')
-                        return
+                        return father, mother
 
                     father_price = father_price_dic[father['rareAmount']]
                     logger.warn('父亲狗狗上架繁育价格为：{0}'.format(father_price))
@@ -219,6 +219,7 @@ class Breed(LaiCiGou):
                     shelf = Shelf(self.user)
                     shelf_success = shelf.shelf(father['petId'], father_price)
                     if not shelf_success:
+                        self.random_sleep(10, 15)
                         continue
 
                     # 等待3分钟避免错误：专属分享，3分钟后可购买

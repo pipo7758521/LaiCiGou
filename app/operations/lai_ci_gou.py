@@ -218,13 +218,14 @@ class LaiCiGou:
         logger.warn('随机暂停 {0} 秒'.format(interval))
         time.sleep(interval)
 
-    def get_pets_on_sale(self,condition):
+    def get_pets_on_sale(self, condition):
         url = 'https://pet-chain.baidu.com/data/market/queryPetsOnSale'
         headers = self.headers_template
         r = requests.post(url, headers=headers, data=json.dumps(condition))
         response = json.loads(r.content)
         pets = response['data']['petsOnSale']
         return pets
+
 
 if __name__ == '__main__':
     lai_ci_gou = LaiCiGou(user)
